@@ -1,0 +1,18 @@
+<app-navbar></app-navbar>
+<div class="container mt-2 text-center">
+    <h2>Productos</h2>
+    <table class="table">
+  <thead>
+    <tr class="table-dark">
+      <th scope="col">Nombre</th>
+      <th scope="col">Descripcion</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr *ngFor="let producto of datos">
+      <td>{{producto.name}}</td>
+      <td>{{producto.desription}}</td>
+    </tr>
+  </tbody>
+</table>
+</div>
