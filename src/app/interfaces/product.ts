@@ -1,5 +1,7 @@
 export interface Product{
-    id: number,
-    name: string,
-    desription: string
+    id?: number,
+    nombre: string,
+    existencias:number,
+    fechaAdquisicion?:string,
+    panaderiaId:number
 }

@@ -8,13 +8,13 @@ import { FormsModule } from '@angular/forms';
 import { provideAnimations } from '@angular/platform-browser/animations';
 
 import { provideToastr } from 'ngx-toastr';
-import { addTokenInterceptor } from './util/add-token.interceptor';
+import { MatDialogModule } from '@angular/material/dialog';
 
 export const appConfig: ApplicationConfig = {
   providers: [provideZoneChangeDetection({ eventCoalescing: true }),provideAnimations(),provideToastr({
       timeOut: 3000,
       positionClass: 'toast-bottom-right',
       preventDuplicates: true,
-    }),provideHttpClient( withInterceptors([addTokenInterceptor])),
-    importProvidersFrom(HttpClientModule),importProvidersFrom(FormsModule), provideRouter(routes), provideClientHydration(withEventReplay())]
+    }),importProvidersFrom(MatDialogModule),
+    importProvidersFrom(HttpClientModule),importProvidersFrom(FormsModule), provideRouter(routes)]
 };

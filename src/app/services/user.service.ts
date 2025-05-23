@@ -12,7 +12,7 @@ export class UserService {
   private myApiUrl: string;
   constructor(private http: HttpClient) {
     this.myAppUrl = environment.endpoint;
-    this.myApiUrl = 'api/users/';
+    this.myApiUrl = 'SGIndPan/users';
    }
 
    signIn(user:User): Observable<any> {
@@ -20,6 +20,6 @@ export class UserService {
    }
 
    login(user:User): Observable<string> {
-    return this.http.post<string>(`${this.myAppUrl}${this.myApiUrl}login`,user)
+    return this.http.post<string>(`${this.myAppUrl}${this.myApiUrl}/login`,user)
    }
 }

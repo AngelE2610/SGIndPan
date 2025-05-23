@@ -16,7 +16,7 @@ import { HttpErrorResponse } from '@angular/common/http';
   styleUrl: './sign-in.component.css'
 })
 export class SignInComponent {
-    userName:string='';
+    username:string='';
     password:string='';
     confirmPassword:string='';
     loading:boolean= false;
@@ -26,7 +26,7 @@ export class SignInComponent {
       }
 
     addUser(){
-      if(this.userName=='' || this.password=='' || this.confirmPassword==''){
+      if(this.username=='' || this.password=='' || this.confirmPassword==''){
         this.toastr.error('Todos los campos son obligatorios','Error')
         return;
       }
@@ -35,7 +35,7 @@ export class SignInComponent {
         return;
       }
       const user: User = {
-        userName: this.userName,
+        username: this.username,
         password: this.password
       }
       this.loading=true;

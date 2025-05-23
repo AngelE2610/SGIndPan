@@ -1,0 +1,39 @@
+<div class="container">
+  <div class="row">
+    <div class="col-10">
+      <h2 class="encabez">Productos</h2>
+    </div>
+    <div class="col-2">
+      <button class="btn btn-outline-success" (click)="openDialogAdd()">
+  <img src="icons8-añadir-32.png" alt="Agregar" width="24" height="24">
+  <span>Agregar</span>
+</button>
+    </div>
+    
+  </div>
+  
+    <table class="table">
+  <thead>
+    <tr class="table-dark">
+      <th scope="col">Nombre</th>
+      <th scope="col">Existencias</th>
+      <th scope="col">Fecha Adquirido</th>
+      <th scope="col">Opciones</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr *ngFor="let producto of datos">
+      <td>{{producto.nombre}}</td>
+      <td>{{producto.existencias}}</td>
+      <td>{{producto.fechaAdquisicion | date: 'yyyy-MM-dd'}}</td>
+      <td>
+          <button type="button" class="btn btn-primary" (click)="openDialog(producto)" data-bs-toggle="modal" data-bs-target="#aumentarExistenciasModal">
+  Aumentar existencias
+</button>
+<span class="eliminar-icono" (click)="deleteProd(producto)"><img src="icons8-basura-llena-32.png" alt=""></span>
+        </td>
+    </tr>
+  </tbody>
+</table>
+</div>
+

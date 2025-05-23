@@ -4,28 +4,34 @@ import { ProductsService } from '../../services/products.service';
 import { NgFor } from '@angular/common';
 import { Product } from '../../interfaces/product';
 import { ListProd } from '../../interfaces/list-prod';
+import { PanaderiaService } from '../../services/panaderia.service';
+import { Panaderia } from '../../interfaces/panaderia';
+import { RouterOutlet } from '@angular/router';
 
 @Component({
   selector: 'app-dashboard',
-  imports: [NavbarComponent,NgFor],
+  imports: [NavbarComponent,NgFor,RouterOutlet],
   templateUrl: './dashboard.component.html',
   styleUrl: './dashboard.component.css'
 })
 export class DashboardComponent {
-  datos:any;
+  nombre:string ='';
 
-  constructor(private _productService: ProductsService){
+  constructor(private panaderiaService: PanaderiaService){
 
   }
   ngOnInit():void{
-    this.getProducts();
-    console.log(this.datos)
+    const userId = localStorage.getItem('userId');
+    if(userId){
+      this.getPanaderia(parseInt(userId));
+    }
+    
   }
 
-  getProducts(){
-    this._productService.getProducts().subscribe(data=>{
-      this.datos=data;
-      console.log(data);
+    getPanaderia(id:number){
+      this.panaderiaService.getPanaderia(id).subscribe((data:any) => {
+      this.nombre = data.nombre;
+      localStorage.setItem('panaderiaId',data?.id);
     })
   }
 }

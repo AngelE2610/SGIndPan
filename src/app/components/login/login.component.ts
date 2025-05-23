@@ -15,7 +15,7 @@ import { SpinnerComponent } from '../../shared/spinner/spinner.component';
   styleUrl: './login.component.css'
 })
 export class LoginComponent {
-  userName='';
+  username='';
   password='';
   loading:boolean = false;
 
@@ -24,20 +24,21 @@ export class LoginComponent {
   }
 
   login(){
-    if(this.userName=='' || this.password==''){
+    if(this.username=='' || this.password==''){
         this.toastr.error('Todos los campos son obligatorios','Error')
         return;
       }
        const user: User = {
-              userName: this.userName,
+              username: this.username,
               password: this.password
             }
             this.loading = true;
             this.userService.login(user).subscribe({
-              next: (token) =>{
+              next: (data:any) =>{
                 this.loading=false;
-                this.router.navigate(['/dashboard']);
-                localStorage.setItem('token',token);
+                this.router.navigate(['/dashboard/productos']);
+                localStorage.setItem('token',data.token);
+                localStorage.setItem('userId',data.userId);
               },
               error:(e:HttpErrorResponse) =>{
                 this.toastr.error(e.error.msg? e.error.msg:'Error comuniquese con un administrador','Error');
