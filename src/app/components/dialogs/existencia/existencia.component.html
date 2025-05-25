@@ -1,0 +1,13 @@
+<h2 mat-dialog-title>Aumentar existencias</h2>
+<mat-dialog-content>
+  <form (ngSubmit)="aceptar()">
+    <mat-form-field style="width: 100%;">
+      <label class="form-label">Cantidad a agregar</label>
+      <input class="form-control" type="number" [(ngModel)]="cantidadAAgregar" name="cantidad" min="1" required>
+    </mat-form-field>
+  </form>
+</mat-dialog-content>
+<mat-dialog-actions>
+  <button mat-button (click)="cancelar()">Cancelar</button>
+  <button class="btn btn-success" [mat-dialog-close]="cantidadAAgregar" color="primary">Aceptar</button>
+</mat-dialog-actions>

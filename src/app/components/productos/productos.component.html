@@ -1,0 +1,43 @@
+<div class="container">
+  
+    <app-encabezado
+    [titulo]="'Productos'"
+    (funcion)="openDialogAdd()">
+  </app-encabezado>
+    <table class="table">
+  <thead>
+    <tr class="table-dark">
+      <th scope="col">Nombre</th>
+      <th scope="col">Existencias</th>
+      <th scope="col">Fecha Adquirido</th>
+      <th scope="col">Opciones</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr *ngFor="let producto of paginatedData">
+      <td>{{producto.nombre}}</td>
+      <td>{{producto.existencias}}</td>
+      <td>{{producto.fechaAdquisicion | date: 'yyyy-MM-dd'}}</td>
+      <td>
+          <app-buttons
+          [textoBoton]="'Aumentar Existencias'"
+          [objeto]="producto"
+          (funcion)="openDialog($event)"
+          (eliminar)="deleteProd($event)"
+          ></app-buttons>
+        </td>
+    </tr>
+  </tbody>
+</table>
+<nav aria-label="Page navigation">
+  <ul class="pagination justify-content-end">
+    <li class="page-item" [class.disabled]="currentPage === 0">
+      <button class="btn btn-secondary" (click)="prevPage()">Anterior</button>
+    </li>
+    <li class="page-item" [class.disabled]="(currentPage + 1) * pageSize >= datos.length">
+      <button class="btn btn-secondary" (click)="nextPage()">Siguiente</button>
+    </li>
+  </ul>
+</nav>
+</div>
+

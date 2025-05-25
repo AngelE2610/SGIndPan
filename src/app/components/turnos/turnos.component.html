@@ -1,0 +1,33 @@
+<div class="container">
+  <app-encabezado
+    [titulo]="'Turnos'"
+    (funcion)="openDialogAdd()"
+    >
+  </app-encabezado>
+  
+    <table class="table">
+  <thead>
+    <tr class="table-dark">
+      <th scope="col">Numero de Turno</th>
+      <th scope="col">Responsable</th>
+      <th scope="col">Fecha</th>
+      <th scope="col">Opciones</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr *ngFor="let turno of datos">
+      <td>{{turno.numero}}</td>
+      <td>{{ getTrabajadorCargo3(turno.trabajadores)?.nombre}}</td>
+      <td>{{turno.fecha | date: 'yyyy-MM-dd'}}</td>
+      <td>
+          <app-buttons
+          [textoBoton]="'Detalles'"
+          [objeto]="turno"
+          (funcion)="openDialogDetalles($event)"
+          (eliminar)="deleteTurno($event)"
+          ></app-buttons> 
+        </td>
+    </tr>
+  </tbody>
+</table>
+</div>

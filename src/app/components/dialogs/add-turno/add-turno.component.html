@@ -1,0 +1,48 @@
+<h2 mat-dialog-title>Crear Turno</h2>
+<mat-dialog-content>
+  <ul class="nav nav-tabs" id="myTab" role="tablist">
+    <li class="nav-item" role="presentation">
+      <button class="nav-link active" id="inicio-tab" data-bs-toggle="tab" data-bs-target="#inicio" type="button" role="tab" aria-controls="inicio" aria-selected="true">Datos</button>
+    </li>
+    <li class="nav-item" role="presentation">
+      <button class="nav-link" id="productos-tab" data-bs-toggle="tab" data-bs-target="#producto" type="button" role="tab" aria-controls="producto" aria-selected="false">Productos</button>
+    </li>
+  </ul>
+  
+  <form (ngSubmit)="aceptar()">
+    <div class="tab-content pt-3">
+      <!-- Panel de inicio -->
+      <div class="tab-pane active" id="inicio" role="tabpanel" aria-labelledby="inicio-tab">
+        <div class="mb-3">
+          <label class="form-label">Numero</label>
+          <input class="form-control" type="number" [(ngModel)]="turno.numero" name="nombre" required>
+        </div>
+        <div class="mb-3">
+          <label class="form-label">Fecha</label>
+          <input class="form-control" type="date" [(ngModel)]="turno.fecha" name="salario" min="1" required>
+        </div>
+      </div>
+      <!-- Panel de productos -->
+      <div class="tab-pane" id="producto" role="tabpanel" aria-labelledby="productos-tab">
+        <div class="form-group">
+          <label>Selecciona productos:</label>
+          <select class="form-control" multiple (change)="onProductosSeleccionados($event)" name="productos">
+            <option *ngFor="let p of opciones" [value]="p.id">{{p.nombre}}({{p.existencias}})</option>
+          </select>
+        </div>
+        <div *ngFor="let ps of turno.Productos; let i = index" class="mb-2">
+          <div class="d-flex align-items-center" style="margin-top: 5px;">
+            <span class="mr-2">{{getNombreProducto(ps.productoId)}}</span>
+            <input type="number" class="form-control w-25" [(ngModel)]="ps.cantidadUsada"
+              placeholder="Cantidad" [name]="'cantidad_' + i" style="margin-left: 5px; margin-right: 5px;">
+            <button class="btn btn-danger ml-2" (click)="eliminarProducto(i)">Eliminar</button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </form>
+</mat-dialog-content>
+<mat-dialog-actions>
+  <button mat-button (click)="cancelar()">Cancelar</button>
+  <button class="btn btn-success" [mat-dialog-close]="turno" color="primary">Aceptar</button>
+</mat-dialog-actions>

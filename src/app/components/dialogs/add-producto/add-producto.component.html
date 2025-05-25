@@ -1,0 +1,21 @@
+<h2 mat-dialog-title>Agregar Producto</h2>
+<mat-dialog-content>
+  <form (ngSubmit)="aceptar()">
+    <div class="mb-3">
+      <label class="form-label">Nombre</label>
+      <input class="form-control" type="text" [(ngModel)]="producto.nombre" name="nombre"  required>
+    </div>
+    <div class="mb-3">
+      <label class="form-label">Existencias</label>
+      <input class="form-control" type="number" [(ngModel)]="producto.existencias" name="cantidad" min="1" required>
+    </div>
+    <div class="mb-3">
+      <label class="form-label">Adquirido</label>
+      <input class="form-control" type="date" [(ngModel)]="producto.fechaAdquisicion" name="fecha" required>
+    </div>
+  </form>
+</mat-dialog-content>
+<mat-dialog-actions>
+  <button mat-button (click)="cancelar()">Cancelar</button>
+  <button class="btn btn-success" [mat-dialog-close]="producto" color="primary">Aceptar</button>
+</mat-dialog-actions>

@@ -1,0 +1,59 @@
+<h2 mat-dialog-title>Detalles Turno <span class="text-primary fw-bold bg-light">#{{Turno.numero}}
+</span> del <span class="text-primary fw-bold bg-light">{{Turno.fecha | date: 'yyyy-MM-dd'}}</span></h2>
+
+<mat-dialog-content>
+  <div class="container">
+    <!-- Nav tabs -->
+    <ul class="nav nav-tabs" id="myTab" role="tablist">
+      <li class="nav-item" role="presentation">
+        <button class="nav-link active" id="productos-tab" data-bs-toggle="tab" data-bs-target="#productos" type="button" role="tab" aria-controls="productos" aria-selected="true">Productos</button>
+      </li>
+      <li class="nav-item" role="presentation">
+        <button class="nav-link" id="trabajadores-tab" data-bs-toggle="tab" data-bs-target="#trabajadores" type="button" role="tab" aria-controls="trabajadores" aria-selected="false">Trabajadores</button>
+      </li>
+    </ul>
+
+    <!-- Tab panes -->
+    <div class="tab-content pt-3">
+      <div class="tab-pane active" id="productos" role="tabpanel" aria-labelledby="productos-tab">
+        <table class="table">
+          <thead>
+            <tr class="table-dark">
+              <th scope="col">Nombre</th>
+              <th scope="col">Cantidad Usada</th>
+              <th scope="col">Existencias Restantes</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr *ngFor="let producto of productos">
+              <td>{{producto.nombre}}</td>
+              <td>{{producto.TurnoProducto?.cantidadUsada}}</td>
+              <td>{{producto.existencias}}</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+      <div class="tab-pane" id="trabajadores" role="tabpanel" aria-labelledby="trabajadores-tab">
+        <table class="table">
+          <thead>
+            <tr class="table-dark">
+              <th scope="col">Nombre</th>
+              <th scope="col">Cargo</th>
+              <th scope="col">Salario</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr *ngFor="let trabajador of trabajadores">
+              <td>{{trabajador.nombre}}</td>
+              <td>{{getNombreCargo(trabajador.cargoId)}}</td>
+              <td>{{trabajador.salario}}</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+</mat-dialog-content>
+<mat-dialog-actions>
+  <button class="btn btn-success" (click)="cancelar()">Regresar</button>
+</mat-dialog-actions>

@@ -1,0 +1,30 @@
+<h2 mat-dialog-title>Agregar Trabajador</h2>
+<mat-dialog-content>
+  <form (ngSubmit)="aceptar()">
+    <div class="mb-3">
+      <label class="form-label">Nombre</label>
+      <input class="form-control" type="text" [(ngModel)]="Trabajador.nombre" name="nombre"  required>
+    </div>
+    <div class="mb-3">
+      <label class="form-label">Salario</label>
+      <input class="form-control" type="number" [(ngModel)]="Trabajador.salario" name="salario" min="1" required>
+    </div>
+    <div class="mb-3">
+      <label class="form-label">Cargo</label>
+      <select class="form-select" [(ngModel)]="Trabajador.cargoId" name="cargo">
+  <option value="" disabled selected>Selecciona una opción</option>
+  <option *ngFor="let opcion of opciones" [value]="opcion.id">
+    {{ opcion.nombre }}
+  </option>
+</select>
+    </div>
+    <div class="mb-3">
+      <label class="form-label">Turno</label>
+      <input class="form-control" type="number" [(ngModel)]="Trabajador.numeroTurno" name="fecha" required>
+    </div>
+  </form>
+</mat-dialog-content>
+<mat-dialog-actions>
+  <button mat-button (click)="cancelar()">Cancelar</button>
+  <button class="btn btn-success" [mat-dialog-close]="Trabajador" color="primary">Aceptar</button>
+</mat-dialog-actions>

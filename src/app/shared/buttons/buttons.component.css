@@ -1,0 +1,7 @@
+.eliminar-icono {
+  cursor: pointer;
+}
+.eliminar-icono:hover {
+  opacity: 0.8;
+  /* o cualquier otro efecto que quieras */
+}
