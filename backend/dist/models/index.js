@@ -34,6 +34,9 @@ producto_1.Producto.belongsTo(panaderia_1.Panaderia, { foreignKey: 'panaderiaId'
 //Panaderia 1:N Trabajador
 panaderia_1.Panaderia.hasMany(trabajador_1.Trabajador, { foreignKey: 'panaderiaId' });
 trabajador_1.Trabajador.belongsTo(panaderia_1.Panaderia, { foreignKey: 'panaderiaId' });
+//Panaderia 1:N Venta
+panaderia_1.Panaderia.hasMany(venta_1.Venta, { foreignKey: 'panaderiaId' });
+venta_1.Venta.belongsTo(panaderia_1.Panaderia, { foreignKey: 'panaderiaId' });
 //user 1:N panaderia
 user_model_1.User.hasMany(panaderia_1.Panaderia, { foreignKey: 'userId' });
 panaderia_1.Panaderia.belongsTo(user_model_1.User, { foreignKey: 'userId' });

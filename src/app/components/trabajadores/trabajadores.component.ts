@@ -7,10 +7,11 @@ import { NgFor } from '@angular/common';
 import { AddTrabajadorComponent } from '../dialogs/add-trabajador/add-trabajador.component';
 import { ButtonsComponent } from "../../shared/buttons/buttons.component";
 import { EncabezadoComponent } from "../../shared/encabezado/encabezado.component";
+import { TablaFiltrarComponent } from '../../shared/tabla-filtrar/tabla-filtrar.component';
 
 @Component({
   selector: 'app-trabajadores',
-  imports: [NgFor, ButtonsComponent, EncabezadoComponent],
+  imports: [TablaFiltrarComponent],
   templateUrl: './trabajadores.component.html',
   styleUrl: './trabajadores.component.css'
 })

@@ -10,12 +10,13 @@ import { MatButtonModule } from '@angular/material/button';
 import { AddProductoComponent } from '../dialogs/add-producto/add-producto.component';
 import { ButtonsComponent } from "../../shared/buttons/buttons.component";
 import { EncabezadoComponent } from "../../shared/encabezado/encabezado.component";
+import { TablaFiltrarComponent } from '../../shared/tabla-filtrar/tabla-filtrar.component';
 // Importa Modal de Bootstrap si usas el JS de Bootstrap
 declare var bootstrap: any;
 
 @Component({
   selector: 'app-productos',
-  imports: [NgFor, FormsModule, CommonModule, MatButtonModule, ButtonsComponent, EncabezadoComponent],
+  imports: [ FormsModule, CommonModule, MatButtonModule, TablaFiltrarComponent],
   templateUrl: './productos.component.html',
   styleUrl: './productos.component.css'
 })

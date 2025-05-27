@@ -16,12 +16,12 @@ export const Venta = sequelize.define('Venta', {
     type: DataTypes.DATE,
     allowNull: false
   },
-  productoId: {
+  numeroTurno: {
     type: DataTypes.INTEGER,
     allowNull: false
   },
-  turnoId: {
-    type: DataTypes.INTEGER,
-    allowNull: false
+  panaderiaId:{
+    type:DataTypes.INTEGER,
+    allowNull:false
   }
 });

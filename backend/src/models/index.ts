@@ -24,6 +24,10 @@ Producto.belongsTo(Panaderia, { foreignKey: 'panaderiaId' });
 Panaderia.hasMany(Trabajador, { foreignKey: 'panaderiaId' });
 Trabajador.belongsTo(Panaderia, { foreignKey: 'panaderiaId' });
 
+//Panaderia 1:N Venta
+Panaderia.hasMany(Venta, { foreignKey: 'panaderiaId' });
+Venta.belongsTo(Panaderia, { foreignKey: 'panaderiaId' });
+
 //user 1:N panaderia
 User.hasMany(Panaderia, { foreignKey: 'userId' });
 Panaderia.belongsTo(User, { foreignKey: 'userId' });

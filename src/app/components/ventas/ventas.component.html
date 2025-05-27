@@ -1,0 +1,11 @@
+<app-tabla-filtrar
+  [datos]="datos"
+  [filtrado]="'turno'"
+  [columnas]="[
+    { titulo: 'Número de Turno', propiedad: 'numeroTurno' },
+    { titulo: 'Cantidad', propiedad: 'cantidad'},
+    { titulo: 'Fecha', propiedad: 'fechaVenta' }
+  ]"
+  [propiedadFiltro]="'numeroTurno'"
+  [tituloTabla]="'Ventas'"
+></app-tabla-filtrar>

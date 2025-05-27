@@ -1,34 +1,17 @@
-<div class="container">
-  <app-encabezado
-    [titulo]="'Trabajadores'"
-    (funcion)="openDialogAdd()">
-  </app-encabezado>
-  
-    <table class="table">
-  <thead>
-    <tr class="table-dark">
-      <th scope="col">Nombre</th>
-      <th scope="col">Turno</th>
-      <th scope="col">Salario</th>
-      <th scope="col">Cargo</th>
-      <th scope="col">Opciones</th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr *ngFor="let trabajador of datos">
-      <td>{{trabajador.nombre}}</td>
-      <td>{{trabajador.numeroTurno}}</td>
-      <td>{{trabajador.salario}}</td>
-      <td>{{trabajador.Cargo?.nombre}}</td>
-      <td>
-          <app-buttons
-          [textoBoton]="'Editar'"
-          [objeto]="trabajador"
-          (funcion)="openDialogAdd($event)"
-          (eliminar)="deleteTrabajador($event)"
-          ></app-buttons>
-        </td>
-    </tr>
-  </tbody>
-</table>
-</div>
+<app-tabla-filtrar
+  [datos]="datos"
+  [opciones]="true"
+  [tituloButton]="'Editar'"
+  [filtrado]="'turno'"
+  [columnas]="[
+    { titulo: 'Nombre', propiedad: 'nombre' },
+    { titulo: 'Turno', propiedad: 'numeroTurno'},
+    { titulo: 'Salario', propiedad: 'salario' },
+    { titulo: 'Cargo', propiedad: 'Cargo.nombre' }
+  ]"
+  [propiedadFiltro]="'numeroTurno'"
+  [tituloTabla]="'Trabajadores'"
+  (onDetalles)="openDialogAdd($event)"
+  (onEliminar)="deleteTrabajador($event)"
+  (onFuncion)="openDialogAdd()"
+></app-tabla-filtrar>

@@ -4,7 +4,20 @@
     (funcion)="openDialogAdd()"
     >
   </app-encabezado>
-  
+  <div class="row mb-3 mt-3">
+    <div class="col-2">
+      <h5>Filtrar por numero</h5>
+    </div>
+    <div class="col-2">
+      <select class="form-select" [(ngModel)]="filtroTurno" (change)="filtrarTurnos()">
+  <option value="all">Todos</option>
+  <option *ngFor="let num of numerosTurnos" [value]="num">{{num}}</option>
+</select>
+    </div>
+    
+  </div>
+
+
     <table class="table">
   <thead>
     <tr class="table-dark">
@@ -15,10 +28,10 @@
     </tr>
   </thead>
   <tbody>
-    <tr *ngFor="let turno of datos">
+    <tr *ngFor="let turno of elementosPagina">
       <td>{{turno.numero}}</td>
       <td>{{ getTrabajadorCargo3(turno.trabajadores)?.nombre}}</td>
-      <td>{{turno.fecha | date: 'yyyy-MM-dd'}}</td>
+      <td>{{turno.fecha | date}}</td>
       <td>
           <app-buttons
           [textoBoton]="'Detalles'"
@@ -30,4 +43,15 @@
     </tr>
   </tbody>
 </table>
+<nav *ngIf="totalPaginas > 1">
+  <ul class="pagination justify-content-center">
+    <li class="page-item cursor-pointer" [class.disabled]="paginaActual === 1">
+      <a class="page-link" (click)="paginaAnterior()">Anterior</a>
+    </li>
+    
+    <li class="page-item cursor-pointer" [class.disabled]="paginaActual === totalPaginas">
+      <a class="page-link" (click)="paginaSiguiente()">Siguiente</a>
+    </li>
+  </ul>
+</nav>
 </div>

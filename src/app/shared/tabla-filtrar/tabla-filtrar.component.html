@@ -1,0 +1,66 @@
+
+<div class="row">
+    <div class="col-10">
+        <h2 class="encabez">{{ tituloTabla }}</h2>
+    </div>
+    <div class="col-2 " *ngIf="!filtrado">
+      <button class="btn btn-outline-success " (click)="onFuncion.emit()">
+  <img src="icons8-añadir-32.png" alt="Agregar" width="24" height="24">
+  <span>Agregar</span>
+</button>
+    </div>
+</div>
+<div class="row mb-3 mt-3" *ngIf="filtrado">
+    <div class="col-2">
+        <h5>Filtrar por {{filtrado}}</h5>
+    </div>
+    <div class="col-2">
+        <select class="form-select" [(ngModel)]="filtro" (change)="filtrar()">
+  <option value="all">Todos</option>
+  <option *ngFor="let opcion of opcionesFiltro" [value]="opcion">{{ opcion }}</option>
+</select>
+    </div>
+    <div class="col-8 d-flex justify-content-end">
+      <button class="btn btn-outline-success " (click)="onFuncion.emit()">
+  <img src="icons8-añadir-32.png" alt="Agregar" width="24" height="24">
+  <span>Agregar</span>
+</button>
+    </div>
+</div>
+
+<table class="table">
+  <thead>
+    <tr class="table-dark">
+      <th *ngFor="let columna of columnas">{{ columna.titulo }}</th>
+      <th *ngIf="opciones">Opciones</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr *ngFor="let item of elementosPagina">
+      <td *ngFor="let columna of columnas">
+        <ng-container [ngSwitch]="columna.propiedad">
+          <span *ngSwitchCase="'cantidad'">${{ item[columna.propiedad] }}</span>
+          <span *ngSwitchCase="'fechaVenta'">{{ item[columna.propiedad] | date }}</span>
+          <span *ngSwitchCase="'fechaAdquisicion'">{{ item[columna.propiedad] | date }}</span>
+           <span *ngSwitchDefault>{{ getValorAnidado(item, columna.propiedad) }}</span>
+          <!-- <span *ngSwitchDefault>{{ item[columna.propiedad] }}</span> -->
+        </ng-container>
+      </td>
+      <td *ngIf="opciones">
+        <button class="btn btn-primary" (click)="onDetalles.emit(item)">{{tituloButton}}</button>
+        <span class="eliminar-icono" (click)="onEliminar.emit(item)"><img src="icons8-basura-llena-32.png" alt=""></span>
+      </td>
+    </tr>
+  </tbody>
+</table>
+<nav *ngIf="totalPaginas > 1">
+  <ul class="pagination justify-content-center">
+    <li class="page-item cursor-pointer" [class.disabled]="paginaActual === 1">
+      <a class="page-link" (click)="paginaAnterior()">Anterior</a>
+    </li>
+    
+    <li class="page-item cursor-pointer" [class.disabled]="paginaActual === totalPaginas">
+      <a class="page-link" (click)="paginaSiguiente()">Siguiente</a>
+    </li>
+  </ul>
+</nav>

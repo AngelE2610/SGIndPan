@@ -6,6 +6,7 @@ import { ProductosComponent } from './components/productos/productos.component';
 import { TrabajadoresComponent } from './components/trabajadores/trabajadores.component';
 import { authGuard } from './util/auth.guard';
 import { TurnosComponent } from './components/turnos/turnos.component';
+import { VentasComponent } from './components/ventas/ventas.component';
 
 export const routes: Routes = [
     {path:'',redirectTo:'login',pathMatch:'full'},
@@ -14,7 +15,8 @@ export const routes: Routes = [
     {path:'dashboard',component: DashboardComponent,canActivate:[authGuard],children:[
         {path:'productos',component:ProductosComponent},
         {path:'trabajadores',component:TrabajadoresComponent},
-        {path:'turnos',component:TurnosComponent}
+        {path:'turnos',component:TurnosComponent},
+        {path:'ventas',component:VentasComponent}
     ]},
     {path:'**',redirectTo:'login',pathMatch:'full'}
 ];

@@ -1,0 +1,15 @@
+.eliminar-icono {
+  cursor: pointer;
+}
+.eliminar-icono:hover {
+  opacity: 0.8;
+  /* o cualquier otro efecto que quieras */
+}
+.encabez{
+    text-align: left;
+    margin-top: 5px;
+    margin-bottom: 5px;
+}
+.page-link {
+  cursor: pointer;
+}

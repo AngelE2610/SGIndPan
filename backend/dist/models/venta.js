@@ -21,11 +21,11 @@ exports.Venta = connection_1.default.define('Venta', {
         type: sequelize_1.DataTypes.DATE,
         allowNull: false
     },
-    productoId: {
+    numeroTurno: {
         type: sequelize_1.DataTypes.INTEGER,
         allowNull: false
     },
-    turnoId: {
+    panaderiaId: {
         type: sequelize_1.DataTypes.INTEGER,
         allowNull: false
     }

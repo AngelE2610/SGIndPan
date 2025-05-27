@@ -21,6 +21,7 @@ const cargo_1 = __importDefault(require("../routes/cargo"));
 const trabajador_1 = __importDefault(require("../routes/trabajador"));
 const pan_1 = __importDefault(require("../routes/pan"));
 const panaderia_1 = __importDefault(require("../routes/panaderia"));
+const venta_1 = __importDefault(require("../routes/venta"));
 const index_1 = require("./index");
 class Server {
     constructor() {
@@ -50,6 +51,7 @@ class Server {
         this.app.use('/SGIndPan/trabajador', trabajador_1.default);
         this.app.use('/SGIndPan/pan', pan_1.default);
         this.app.use('/SGIndPan/panaderia', panaderia_1.default);
+        this.app.use('/SGIndPan/ventas', venta_1.default);
     }
     DBconnect() {
         return __awaiter(this, void 0, void 0, function* () {
