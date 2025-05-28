@@ -3,15 +3,13 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
     return (mod && mod.__esModule) ? mod : { "default": mod };
 };
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.TurnoProducto = exports.User = exports.Panaderia = exports.Venta = exports.Turno = exports.Producto = exports.TipoPan = exports.Trabajador = exports.Cargo = exports.sequelize = void 0;
+exports.TurnoProducto = exports.User = exports.Panaderia = exports.Venta = exports.Turno = exports.Producto = exports.Trabajador = exports.Cargo = exports.sequelize = void 0;
 const connection_1 = __importDefault(require("../database/connection"));
 exports.sequelize = connection_1.default;
 const cargo_1 = require("./cargo");
 Object.defineProperty(exports, "Cargo", { enumerable: true, get: function () { return cargo_1.Cargo; } });
 const trabajador_1 = require("./trabajador");
 Object.defineProperty(exports, "Trabajador", { enumerable: true, get: function () { return trabajador_1.Trabajador; } });
-const tipo_pan_1 = require("./tipo-pan");
-Object.defineProperty(exports, "TipoPan", { enumerable: true, get: function () { return tipo_pan_1.TipoPan; } });
 const producto_1 = require("./producto");
 Object.defineProperty(exports, "Producto", { enumerable: true, get: function () { return producto_1.Producto; } });
 const turno_1 = require("./turno");

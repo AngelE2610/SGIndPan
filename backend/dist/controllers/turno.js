@@ -41,7 +41,7 @@ const getTurno = (req, res) => __awaiter(void 0, void 0, void 0, function* () {
         return res.status(404).json({ msg: "Turno perdido" });
     }
     const trabajadores = yield index_1.Trabajador.findAll({
-        where: { numeroTurno: turno.numero }
+        where: { numeroTurno: turno.numero, panaderiaId: turno.panaderiaId }
     });
     return res.json(Object.assign(Object.assign({}, turno.toJSON()), { trabajadores }));
 });
@@ -55,7 +55,7 @@ const getAllTurno = (req, res) => __awaiter(void 0, void 0, void 0, function* ()
     }
     const turnosConTrabajadores = yield Promise.all(turno.map((turno) => __awaiter(void 0, void 0, void 0, function* () {
         const trabajadores = yield index_1.Trabajador.findAll({
-            where: { numeroTurno: turno.numero }
+            where: { numeroTurno: turno.numero, panaderiaId: id }
         });
         return Object.assign(Object.assign({}, turno.toJSON()), { trabajadores });
     })));

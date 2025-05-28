@@ -1,7 +1,6 @@
 import sequelize from "../database/connection";
 import { Cargo } from "./cargo";
 import { Trabajador } from "./trabajador";
-import { TipoPan } from "./tipo-pan"; 
 import { Producto } from "./producto"; 
 import { Turno } from "./turno"; 
 import { Venta } from "./venta"; 
@@ -46,7 +45,6 @@ export {
   sequelize,
   Cargo,
   Trabajador,
-  TipoPan,
   Producto,
   Turno,
   Venta,

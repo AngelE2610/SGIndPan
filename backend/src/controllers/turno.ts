@@ -36,7 +36,7 @@ if (!turno) {
   return res.status(404).json({ msg: "Turno perdido" });
 }
 const trabajadores = await Trabajador.findAll({
-    where: { numeroTurno: turno.numero }
+    where: { numeroTurno: turno.numero,panaderiaId:turno.panaderiaId }
   });
 
   return res.json({
@@ -57,7 +57,7 @@ if (!turno) {
  const turnosConTrabajadores = await Promise.all(
     turno.map(async (turno:any) => {
       const trabajadores = await Trabajador.findAll({
-        where: { numeroTurno: turno.numero }
+        where: { numeroTurno: turno.numero,panaderiaId:id }
       });
       return {
         ...turno.toJSON(),
