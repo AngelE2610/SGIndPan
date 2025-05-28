@@ -38,7 +38,7 @@ export class LoginComponent {
                 this.loading=false;
                 localStorage.setItem('token',data.token);
                 localStorage.setItem('userId',data.userId);
-                this.router.navigate(['/dashboard/productos']);
+                this.router.navigate(['/dashboard/home']);
               },
               error:(e:HttpErrorResponse) =>{
                 this.toastr.error(e.error.msg? e.error.msg:'Error comuniquese con un administrador','Error');

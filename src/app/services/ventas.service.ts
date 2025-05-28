@@ -1,6 +1,7 @@
 import { HttpClient } from "@angular/common/http";
 import { Injectable } from "@angular/core";
 import { environment } from "../enviroments/enviroments";
+import { Venta } from "../interfaces/venta";
 
 @Injectable({
   providedIn: 'root'
@@ -17,5 +18,14 @@ export class VentasService {
    }
    getVentasTurno(panaderiaId:number,id:number){
     return this.http.get(`${this.myAppUrl}${this.myApiUrl}${panaderiaId}/${id}`);
+   }
+   crearVenta(body:Venta){
+    return this.http.post(`${this.myAppUrl}${this.myApiUrl}`,body);
+   }
+   getVentasPromedioPanaderia(id:number){
+    return this.http.get(`${this.myAppUrl}${this.myApiUrl}promedio/${id}`);
+   }
+   getVentasMes(panaderiaId:number,id:number){
+    return this.http.get(`${this.myAppUrl}${this.myApiUrl}resumen/${panaderiaId}/${id}`);
    }
 }

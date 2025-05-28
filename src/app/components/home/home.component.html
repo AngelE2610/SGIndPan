@@ -1,0 +1,35 @@
+<div class="row" style="margin-top: 10%;" *ngIf="datos && datos1; else loading">
+  <div class="col-10 col-md-8 col-lg-6 mx-left">
+    <canvas #chart id="chart"></canvas>
+  </div>
+  <div class="col-8 col-md-6 col-lg-6 mx-left">
+    <div class="container mt-4">
+  <div class="card shadow">
+    <div class="card-header bg-primary text-white">
+      <h5 class="mb-0">Resumen de Ventas Mes Actual</h5>
+    </div>
+    <div class="card-body">
+      <ul class="list-group list-group-flush">
+        <li class="list-group-item d-flex justify-content-between align-items-center">
+          Ventas Totales
+          <span class="badge bg-primary rounded-pill">{{ datos1.sumaCantidad | number }}</span>
+        </li>
+        <li class="list-group-item d-flex justify-content-between align-items-center">
+          Cantidad de ventas
+          <span class="badge bg-success rounded-pill">{{ datos1.cantidadVentas | number }}</span>
+        </li>
+        <li class="list-group-item d-flex justify-content-between align-items-center">
+          Promedio de ventas
+          <span class="badge bg-info rounded-pill">{{ datos1.promedioVentas | number:'1.2-2' }}</span>
+        </li>
+      </ul>
+    </div>
+  </div>
+</div>
+
+  </div>
+</div>
+
+<ng-template #loading>
+  <app-spinner></app-spinner>
+</ng-template>

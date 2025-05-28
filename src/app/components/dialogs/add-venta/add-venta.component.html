@@ -1,0 +1,21 @@
+<h2 mat-dialog-title>Agregar Venta</h2>
+<mat-dialog-content>
+  <form (ngSubmit)="aceptar()">
+    <div class="mb-3">
+      <label class="form-label">Cantidad vendida</label>
+      <input class="form-control" type="text" [(ngModel)]="venta.cantidad" name="cantidad"  required>
+    </div>
+    <div class="mb-3">
+      <label class="form-label">Numero de turno</label>
+      <input class="form-control" type="number" [(ngModel)]="venta.numeroTurno" name="turno" min="1" required>
+    </div>
+    <div class="mb-3">
+      <label class="form-label">Fecha de la venta</label>
+      <input class="form-control" type="date" [(ngModel)]="venta.fechaVenta" name="fecha" required>
+    </div>
+  </form>
+</mat-dialog-content>
+<mat-dialog-actions>
+  <button mat-button (click)="cancelar()">Cancelar</button>
+  <button class="btn btn-success" [mat-dialog-close]="venta" color="primary">Aceptar</button>
+</mat-dialog-actions>

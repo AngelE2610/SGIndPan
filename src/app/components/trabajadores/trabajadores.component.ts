@@ -40,7 +40,8 @@ export class TrabajadoresComponent {
     const dialogRef = this.dialog.open(AddTrabajadorComponent,data);
     
     dialogRef.afterClosed().subscribe(result => {
-      if(trabajador){
+      if(result){
+        if(trabajador){
       this.trabajador.actualizarTrabajador(result);
       setTimeout(()=>this.refresh(),1000);
     }else{
@@ -54,8 +55,8 @@ export class TrabajadoresComponent {
               this.toastr.error(err.error.msg);
             }
           });
-    }
-      
+        }
+      }
     });
   }
   deleteTrabajador(trabajador:any){

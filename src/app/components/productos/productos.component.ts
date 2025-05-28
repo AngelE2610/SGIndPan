@@ -47,7 +47,8 @@ currentPage = 0;
     });
 
     dialogRef.afterClosed().subscribe(result => {
-      this.productos.aumentarExistencias(producto.id, result)
+      if(result){
+        this.productos.aumentarExistencias(producto.id, result)
           .subscribe({
             next: () => {
               this.toastr.success('Existencias actualizadas correctamente');
@@ -57,6 +58,7 @@ currentPage = 0;
               this.toastr.error('Error al actualizar existencias');
             }
           });
+      }
     });
   }
   openDialogAdd() {
@@ -65,7 +67,8 @@ currentPage = 0;
     });
 
     dialogRef.afterClosed().subscribe(result => {
-      this.productos.crearProducto(result)
+      if(result){
+        this.productos.crearProducto(result)
           .subscribe({
             next: () => {
               this.toastr.success('Producto creado correctamente');
@@ -75,6 +78,7 @@ currentPage = 0;
               this.toastr.error('Error al crear el producto');
             }
           });
+      }
     });
   }
   deleteProd(producto:any){

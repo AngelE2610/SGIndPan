@@ -86,7 +86,8 @@ paginaActual: number = 1;
       });
   
       dialogRef.afterClosed().subscribe(result => {
-        this.turno.craerTurno(result)
+        if(result){
+          this.turno.craerTurno(result)
             .subscribe({
               next: () => {
                 this.toastr.success('Turno creado correctamente');
@@ -96,6 +97,7 @@ paginaActual: number = 1;
                 this.toastr.error('Error al crear el turno');
               }
             });
+        }
       });
     }
     get elementosPagina(): any[] {

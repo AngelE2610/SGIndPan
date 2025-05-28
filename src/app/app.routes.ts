@@ -7,6 +7,7 @@ import { TrabajadoresComponent } from './components/trabajadores/trabajadores.co
 import { authGuard } from './util/auth.guard';
 import { TurnosComponent } from './components/turnos/turnos.component';
 import { VentasComponent } from './components/ventas/ventas.component';
+import { HomeComponent } from './components/home/home.component';
 
 export const routes: Routes = [
     {path:'',redirectTo:'login',pathMatch:'full'},
@@ -16,7 +17,8 @@ export const routes: Routes = [
         {path:'productos',component:ProductosComponent},
         {path:'trabajadores',component:TrabajadoresComponent},
         {path:'turnos',component:TurnosComponent},
-        {path:'ventas',component:VentasComponent}
+        {path:'ventas',component:VentasComponent},
+        {path:'home',component:HomeComponent}
     ]},
     {path:'**',redirectTo:'login',pathMatch:'full'}
 ];
