@@ -10,7 +10,7 @@
     { titulo: 'Cargo', propiedad: 'Cargo.nombre' }
   ]"
   [propiedadFiltro]="'numeroTurno'"
-  [tituloTabla]="'Trabajadores'"
+  [tituloTabla]="`Trabajadores: (${datos.length})`"
   (onDetalles)="openDialogAdd($event)"
   (onEliminar)="deleteTrabajador($event)"
   (onFuncion)="openDialogAdd()"

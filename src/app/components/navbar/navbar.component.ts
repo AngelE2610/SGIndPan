@@ -17,8 +17,6 @@ export class NavbarComponent {
 
   logOut(){
     localStorage.removeItem('token');
-    localStorage.removeItem('userId');
-    localStorage.removeItem('panaderiaId');
     this.router.navigate(['/login']);
   }
 }

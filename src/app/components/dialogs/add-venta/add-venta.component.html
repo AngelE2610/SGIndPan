@@ -3,15 +3,25 @@
   <form (ngSubmit)="aceptar()">
     <div class="mb-3">
       <label class="form-label">Cantidad vendida</label>
-      <input class="form-control" type="text" [(ngModel)]="venta.cantidad" name="cantidad"  required>
+      <input class="form-control" type="text" [(ngModel)]="venta.cantidad" name="cantidad"  
+      #cantidad="ngModel"  pattern="^[1-9][0-9]*$" required>
+      <div *ngIf="cantidad.invalid && (cantidad.dirty || cantidad.touched)" class="text-danger">
+  <div *ngIf="cantidad.errors?.['required']">El campo es obligatorio.</div>
+  <div *ngIf="cantidad.errors?.['pattern']">Solo puede contener numeros.</div>
+</div>
     </div>
     <div class="mb-3">
       <label class="form-label">Numero de turno</label>
-      <input class="form-control" type="number" [(ngModel)]="venta.numeroTurno" name="turno" min="1" required>
+      <input class="form-control" type="text" [(ngModel)]="venta.numeroTurno" name="turno" 
+      #turno="ngModel"  pattern="^[1-9][0-9]*$" required>
+      <div *ngIf="turno.invalid && (turno.dirty || turno.touched)" class="text-danger">
+  <div *ngIf="turno.errors?.['required']">El campo es obligatorio.</div>
+  <div *ngIf="turno.errors?.['pattern']">Solo puede contener numeros.</div>
+</div>
     </div>
     <div class="mb-3">
       <label class="form-label">Fecha de la venta</label>
-      <input class="form-control" type="date" [(ngModel)]="venta.fechaVenta" name="fecha" required>
+      <input class="form-control" type="date" [max]="fechaMaxima" [(ngModel)]="venta.fechaVenta" name="fecha" required>
     </div>
   </form>
 </mat-dialog-content>

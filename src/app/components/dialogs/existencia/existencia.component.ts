@@ -8,6 +8,7 @@ import { MatInputModule } from '@angular/material/input';
 import { FormsModule } from '@angular/forms';
 import { ProductsService } from '../../../services/products.service';
 import { ToastrService } from 'ngx-toastr';
+import { NgIf } from '@angular/common';
 
 
 @Component({
@@ -16,7 +17,7 @@ import { ToastrService } from 'ngx-toastr';
     MatFormFieldModule,
     MatInputModule,
     FormsModule,
-  MatDialogModule],
+  MatDialogModule,NgIf],
   templateUrl: './existencia.component.html',
   styleUrl: './existencia.component.css'
 })

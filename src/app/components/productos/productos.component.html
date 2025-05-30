@@ -7,7 +7,7 @@
     { titulo: 'Existencias', propiedad: 'existencias'},
     {titulo: 'Fecha Adquisicion', propiedad: 'fechaAdquisicion'}
   ]"
-  [tituloTabla]="'Productos'"
+  [tituloTabla]="`Productos: (${datos.length})`"
   (onDetalles)="openDialog($event)"
   (onEliminar)="deleteProd($event)"
   (onFuncion)="openDialogAdd()"

@@ -6,6 +6,7 @@ import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatInputModule } from '@angular/material/input';
 import { ToastrService } from 'ngx-toastr';
 import { Product } from '../../../interfaces/product';
+import { NgIf } from '@angular/common';
 
 @Component({
   selector: 'app-add-producto',
@@ -13,7 +14,7 @@ import { Product } from '../../../interfaces/product';
     MatFormFieldModule,
     MatInputModule,
     FormsModule,
-  MatDialogModule],
+  MatDialogModule,NgIf],
   templateUrl: './add-producto.component.html',
   styleUrl: './add-producto.component.css'
 })

@@ -7,7 +7,7 @@ const express_1 = require("express");
 const turno_1 = require("../controllers/turno");
 const validate_token_1 = __importDefault(require("../login/validate-token"));
 const router = (0, express_1.Router)();
-router.post("/", turno_1.crearTurno);
+router.post("/", validate_token_1.default, turno_1.crearTurno);
 router.get("/detalles/:id", validate_token_1.default, turno_1.getTurno);
 router.get("/:id", validate_token_1.default, turno_1.getAllTurno);
 router.delete("/:id", validate_token_1.default, turno_1.deleteTurno);

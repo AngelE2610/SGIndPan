@@ -5,7 +5,7 @@ import validateToken from "../login/validate-token";
 
 const router = Router();
 
-router.post("/",crearTurno);
+router.post("/",validateToken,crearTurno);
 router.get("/detalles/:id",validateToken,getTurno);
 router.get("/:id",validateToken,getAllTurno);
 router.delete("/:id",validateToken,deleteTurno);

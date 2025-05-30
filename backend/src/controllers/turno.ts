@@ -1,5 +1,5 @@
 import { Request, Response } from "express";
-import {Turno,Producto,Trabajador, TurnoProducto, TipoPan} from "../models/index"
+import {Turno,Producto,Trabajador, TurnoProducto} from "../models/index"
 
 export const crearTurno = async (req:Request, res:Response) => {
   const { numero, panaderiaId, Productos,fecha } = req.body; // productos = [{ productoId, cantidadUsada }]

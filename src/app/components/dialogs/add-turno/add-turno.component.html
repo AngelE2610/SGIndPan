@@ -9,13 +9,18 @@
     </li>
   </ul>
   
-  <form (ngSubmit)="aceptar()">
+  <form (ngSubmit)="aceptar()" #form="ngForm">
     <div class="tab-content pt-3">
       <!-- Panel de inicio -->
       <div class="tab-pane active" id="inicio" role="tabpanel" aria-labelledby="inicio-tab">
         <div class="mb-3">
           <label class="form-label">Numero</label>
-          <input class="form-control" type="number" [(ngModel)]="turno.numero" name="nombre" required>
+          <input class="form-control" type="text" [(ngModel)]="turno.numero" name="nombre" 
+          #numero="ngModel"  pattern="^[1-9][0-9]*$" required>
+      <div *ngIf="numero.invalid && (numero.dirty || numero.touched)" class="text-danger">
+  <div *ngIf="numero.errors?.['required']">El campo es obligatorio.</div>
+  <div *ngIf="numero.errors?.['pattern']">Solo puede contener numeros.</div>
+</div>
         </div>
         <div class="mb-3">
           <label class="form-label">Fecha</label>
@@ -44,5 +49,5 @@
 </mat-dialog-content>
 <mat-dialog-actions>
   <button mat-button (click)="cancelar()">Cancelar</button>
-  <button class="btn btn-success" [mat-dialog-close]="turno" color="primary">Aceptar</button>
+  <button class="btn btn-success" [disabled]="form.invalid" [mat-dialog-close]="turno" color="primary">Aceptar</button>
 </mat-dialog-actions>

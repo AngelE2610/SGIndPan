@@ -6,7 +6,7 @@ import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatInputModule } from '@angular/material/input';
 import { Cargo, Trabajador } from '../../../interfaces/trabajador';
 import { TrabajadorService } from '../../../services/trabajador.service';
-import { NgFor } from '@angular/common';
+import { NgFor, NgIf } from '@angular/common';
 
 @Component({
   selector: 'app-add-trabajador',
@@ -16,7 +16,7 @@ import { NgFor } from '@angular/common';
     MatInputModule,
     FormsModule,
   MatDialogModule,
-NgFor],
+NgFor,NgIf],
   templateUrl: './add-trabajador.component.html',
   styleUrl: './add-trabajador.component.css'
 })

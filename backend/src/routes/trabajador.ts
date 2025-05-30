@@ -6,9 +6,9 @@ import validateToken from "../login/validate-token";
 
 const router = Router();
 
-router.post('/',crearTrabajador);
+router.post('/',validateToken,crearTrabajador);
 router.get('/:id',validateToken,getTrabajadorPanaderia);
-router.put('/:id',updateTrabajador);
-router.delete('/:id',deleteTrabajador);
+router.put('/:id',validateToken,updateTrabajador);
+router.delete('/:id',validateToken,deleteTrabajador);
 
 export default router;

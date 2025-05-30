@@ -6,7 +6,7 @@ import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatInputModule } from '@angular/material/input';
 import { FormsModule } from '@angular/forms';
 import { ProductsService } from '../../../services/products.service';
-import { NgFor } from '@angular/common';
+import { NgFor, NgIf } from '@angular/common';
 
 @Component({
   selector: 'app-add-turno',
@@ -14,7 +14,7 @@ import { NgFor } from '@angular/common';
     MatFormFieldModule,
     MatInputModule,
     FormsModule,
-  MatDialogModule,NgFor],
+  MatDialogModule,NgFor,NgIf],
   templateUrl: './add-turno.component.html',
   styleUrl: './add-turno.component.css'
 })

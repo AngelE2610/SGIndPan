@@ -7,6 +7,6 @@
     { titulo: 'Fecha', propiedad: 'fechaVenta' }
   ]"
   [propiedadFiltro]="'numeroTurno'"
-  [tituloTabla]="'Ventas'"
+  [tituloTabla]="`Ventas: (${datos.length})`"
   (onFuncion)="openDialogAdd()"
 ></app-tabla-filtrar>
