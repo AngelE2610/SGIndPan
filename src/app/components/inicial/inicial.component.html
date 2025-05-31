@@ -1,0 +1,22 @@
+<div class="wrapper">
+    <form (ngSubmit)="aceptar()" #form="ngForm">
+    <div class="body" >
+        <img src="icons8-añadir-tienda-48.png" alt="img">
+        <h1>Agregar nueva panaderia</h1>
+        <div class="form-floating mb-3 mt-3">
+            <input type="text" [(ngModel)]="nombre" class="form-control"
+            #nombre1="ngModel"  pattern="^([A-Z][a-z]*)(\s[A-Z][a-z]*)*$" name="nombre" required>
+      <div *ngIf="nombre1.invalid && (nombre1.dirty || nombre1.touched)" class="text-danger">
+  <div *ngIf="nombre1.errors?.['required']">El campo es obligatorio.</div>
+  <div *ngIf="nombre1.errors?.['pattern']">Debe comenzar con mayuscula y solo contener letras.</div>
+</div>
+            <label >Nombre</label>
+        </div>
+        
+        <div class="d-grid gap-2">
+            <button type="submit" [disabled]="form.invalid" class="btn btn-primary btn-lg" >Aceptar</button>
+        </div>
+    </div>
+</form>
+    <!-- <app-spinner *ngIf="loading"></app-spinner> -->
+</div>

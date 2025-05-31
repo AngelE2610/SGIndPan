@@ -32,7 +32,7 @@ const getPanaderia = (req, res) => __awaiter(void 0, void 0, void 0, function* (
     const { id } = req.params;
     const panaderiaConDetalles = yield panaderia_1.Panaderia.findOne({ where: { userId: id } });
     if (!panaderiaConDetalles) {
-        return res.status(404).json({ msg: "Turno no encontrado" });
+        return res.status(404).json({ msg: "Panaderia no encontrada" });
     }
     return res.json(panaderiaConDetalles);
 });

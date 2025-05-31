@@ -27,7 +27,7 @@ export const getPanaderia = async(req:Request,res:Response)=>{
 
     const panaderiaConDetalles = await Panaderia.findOne({where:{userId:id}});
 if (!panaderiaConDetalles) {
-  return res.status(404).json({ msg: "Turno no encontrado" });
+  return res.status(404).json({ msg: "Panaderia no encontrada" });
 }
 return res.json(panaderiaConDetalles);
 

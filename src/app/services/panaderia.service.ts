@@ -17,4 +17,7 @@ export class PanaderiaService {
    getPanaderia(id:number){
     return this.http.get(`${this.myAppUrl}${this.myApiUrl}${id}`);
    }
+   crearPanaderia(nombre:string,userId:number){
+    return this.http.post(`${this.myAppUrl}${this.myApiUrl}`,{nombre,userId});
+   }
 }

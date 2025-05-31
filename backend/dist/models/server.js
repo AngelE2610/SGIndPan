@@ -19,7 +19,6 @@ const producto_1 = __importDefault(require("../routes/producto"));
 const turno_1 = __importDefault(require("../routes/turno"));
 const cargo_1 = __importDefault(require("../routes/cargo"));
 const trabajador_1 = __importDefault(require("../routes/trabajador"));
-const pan_1 = __importDefault(require("../routes/pan"));
 const panaderia_1 = __importDefault(require("../routes/panaderia"));
 const venta_1 = __importDefault(require("../routes/venta"));
 const index_1 = require("./index");
@@ -49,7 +48,6 @@ class Server {
         this.app.use('/SGIndPan/turno', turno_1.default);
         this.app.use('/SGIndPan/cargo', cargo_1.default);
         this.app.use('/SGIndPan/trabajador', trabajador_1.default);
-        this.app.use('/SGIndPan/pan', pan_1.default);
         this.app.use('/SGIndPan/panaderia', panaderia_1.default);
         this.app.use('/SGIndPan/ventas', venta_1.default);
     }
