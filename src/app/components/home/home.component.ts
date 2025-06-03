@@ -7,7 +7,7 @@ import { SpinnerComponent } from '../../shared/spinner/spinner.component';
 
 @Component({
   selector: 'app-home',
-  imports:[CommonModule,SpinnerComponent],
+  imports: [CommonModule, SpinnerComponent],
   templateUrl: './home.component.html',
   styleUrls: ['./home.component.css']
 })
@@ -15,7 +15,7 @@ export class HomeComponent implements OnInit, AfterViewInit {
   @ViewChild('chart') chartRef!: ElementRef;
   @ViewChild('chart1') chart1Ref!: ElementRef;
   chart: Chart | undefined;
-  chart1: Chart |undefined;
+  chart1: Chart | undefined;
   datos: any = {};
   datos1: any = {}; // Cambia a objeto, no array
 
@@ -33,8 +33,8 @@ export class HomeComponent implements OnInit, AfterViewInit {
       this.actualizarGrafico(); // Actualiza el gráfico cuando llegan los datos
     });
   }
-  getVentasMes(panaderiaId: number,id: number) {
-    this.ventaService.getVentasMes(panaderiaId,id).subscribe((data: any) => {
+  getVentasMes(panaderiaId: number, id: number) {
+    this.ventaService.getVentasMes(panaderiaId, id).subscribe((data: any) => {
       this.datos1 = data;
       this.actualizarGrafico(); // Actualiza el gráfico cuando llegan los datos
       //this.actualizarGrafico1();
@@ -49,7 +49,7 @@ export class HomeComponent implements OnInit, AfterViewInit {
       this.datos = {};
       this.datos1 = {};
       this.getVentaPromedioMeses(parseInt(panaderiaId));
-      this.getVentasMes(parseInt(panaderiaId),mesActual);
+      this.getVentasMes(parseInt(panaderiaId), mesActual);
     }
   }
 
@@ -80,17 +80,19 @@ export class HomeComponent implements OnInit, AfterViewInit {
         }]
       },
       options: {
-    responsive: true,
-    plugins: {
-      legend: {
-        position: 'top',
-      },title: {
-        display: true,
-        text: 'Promedio de ventas por mes'
-      }}}
+        responsive: true,
+        plugins: {
+          legend: {
+            position: 'top',
+          }, title: {
+            display: true,
+            text: 'Promedio de ventas por mes'
+          }
+        }
+      }
     });
   }
-////////////////////////////////////crear otra tabla  con el #chart1/////////////////////
+  ////////////////////////////////////crear otra tabla  con el #chart1/////////////////////
 
   // actualizarGrafico1() {
   //   const todosLoslabel = [

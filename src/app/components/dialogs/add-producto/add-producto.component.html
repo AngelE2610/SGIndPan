@@ -3,21 +3,21 @@
   <form (ngSubmit)="aceptar()" #form="ngForm">
     <div class="mb-3">
       <label class="form-label">Nombre</label>
-      <input class="form-control" type="text" [(ngModel)]="producto.nombre" name="nombre"
-      #nombre="ngModel"  pattern="^[A-Z][a-z]*(\s[a-z]+)*$" required>
+      <input class="form-control" type="text" [(ngModel)]="producto.nombre" name="nombre" #nombre="ngModel"
+        pattern="^[A-Z][a-z]*(\s[a-z]+)*$" required>
       <div *ngIf="nombre.invalid && (nombre.dirty || nombre.touched)" class="text-danger">
-  <div *ngIf="nombre.errors?.['required']">El campo es obligatorio.</div>
-  <div *ngIf="nombre.errors?.['pattern']">Debe comenzar con mayuscula y solo contener letras.</div>
-</div>
+        <div *ngIf="nombre.errors?.['required']">El campo es obligatorio.</div>
+        <div *ngIf="nombre.errors?.['pattern']">Debe comenzar con mayuscula y solo contener letras.</div>
+      </div>
     </div>
     <div class="mb-3">
       <label class="form-label">Existencias</label>
-      <input class="form-control" type="text" [(ngModel)]="producto.existencias" name="cantidad" 
-      #existencia="ngModel"  pattern="^[1-9][0-9]*$" required>
+      <input class="form-control" type="text" [(ngModel)]="producto.existencias" name="cantidad" #existencia="ngModel"
+        pattern="^[1-9][0-9]*$" required>
       <div *ngIf="existencia.invalid && (existencia.dirty || existencia.touched)" class="text-danger">
-  <div *ngIf="existencia.errors?.['required']">El campo es obligatorio.</div>
-  <div *ngIf="existencia.errors?.['pattern']">Solo puede contener numeros.</div>
-</div>
+        <div *ngIf="existencia.errors?.['required']">El campo es obligatorio.</div>
+        <div *ngIf="existencia.errors?.['pattern']">Solo puede contener numeros.</div>
+      </div>
     </div>
     <div class="mb-3">
       <label class="form-label">Adquirido</label>
@@ -27,5 +27,6 @@
 </mat-dialog-content>
 <mat-dialog-actions>
   <button mat-button (click)="cancelar()">Cancelar</button>
-  <button class="btn btn-success" [disabled]="form.invalid" [mat-dialog-close]="producto" color="primary">Aceptar</button>
+  <button class="btn btn-success" [disabled]="form.invalid" [mat-dialog-close]="producto"
+    color="primary">Aceptar</button>
 </mat-dialog-actions>

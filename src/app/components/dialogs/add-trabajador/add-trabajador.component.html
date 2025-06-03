@@ -4,42 +4,43 @@
     <div class="mb-3">
       <label class="form-label">Nombre</label>
       <input class="form-control" #nombre="ngModel" type="text" [(ngModel)]="Trabajador.nombre"
-      pattern="^([A-Z][a-z]+)(\s[A-Z][a-z]+)*$" name="nombre"  required>
+        pattern="^([A-Z][a-z]+)(\s[A-Z][a-z]+)*$" name="nombre" required>
       <div *ngIf="nombre.invalid && (nombre.dirty || nombre.touched)" class="text-danger">
-  <div *ngIf="nombre.errors?.['required']">El campo es obligatorio.</div>
-  <div *ngIf="nombre.errors?.['pattern']">Debe comenzar con mayuscula y solo contener letras.</div>
-</div>
+        <div *ngIf="nombre.errors?.['required']">El campo es obligatorio.</div>
+        <div *ngIf="nombre.errors?.['pattern']">Debe comenzar con mayuscula y solo contener letras.</div>
+      </div>
     </div>
     <div class="mb-3">
       <label class="form-label">Salario</label>
-      <input class="form-control" type="text" [(ngModel)]="Trabajador.salario" name="salario" 
-      #salario="ngModel"  pattern="^[1-9][0-9]*$" required>
+      <input class="form-control" type="text" [(ngModel)]="Trabajador.salario" name="salario" #salario="ngModel"
+        pattern="^[1-9][0-9]*$" required>
       <div *ngIf="salario.invalid && (salario.dirty || salario.touched)" class="text-danger">
-  <div *ngIf="salario.errors?.['required']">El campo es obligatorio.</div>
-  <div *ngIf="salario.errors?.['pattern']">Solo puede contener numeros.</div>
-</div>
+        <div *ngIf="salario.errors?.['required']">El campo es obligatorio.</div>
+        <div *ngIf="salario.errors?.['pattern']">Solo puede contener numeros.</div>
+      </div>
     </div>
     <div class="mb-3">
       <label class="form-label">Cargo</label>
       <select class="form-select" [(ngModel)]="Trabajador.cargoId" name="cargo" required>
-  <option value="" disabled selected>Selecciona una opción</option>
-  <option *ngFor="let opcion of opciones" [value]="opcion.id">
-    {{ opcion.nombre }}
-  </option>
-</select>
+        <option value="" disabled selected>Selecciona una opción</option>
+        <option *ngFor="let opcion of opciones" [value]="opcion.id">
+          {{ opcion.nombre }}
+        </option>
+      </select>
     </div>
     <div class="mb-3">
       <label class="form-label">Turno</label>
-      <input class="form-control" type="text" [(ngModel)]="Trabajador.numeroTurno" name="fecha" 
-      #turno="ngModel"  pattern="^[1-9][0-9]*$" required>
+      <input class="form-control" type="text" [(ngModel)]="Trabajador.numeroTurno" name="fecha" #turno="ngModel"
+        pattern="^[1-9][0-9]*$" required>
       <div *ngIf="turno.invalid && (turno.dirty || turno.touched)" class="text-danger">
-  <div *ngIf="turno.errors?.['required']">El campo es obligatorio.</div>
-  <div *ngIf="turno.errors?.['pattern']">Solo puede contener numeros.</div>
-</div>
+        <div *ngIf="turno.errors?.['required']">El campo es obligatorio.</div>
+        <div *ngIf="turno.errors?.['pattern']">Solo puede contener numeros.</div>
+      </div>
     </div>
   </form>
 </mat-dialog-content>
 <mat-dialog-actions>
   <button mat-button (click)="cancelar()">Cancelar</button>
-  <button class="btn btn-success" [disabled]="form.invalid" [mat-dialog-close]="Trabajador" color="primary">Aceptar</button>
+  <button class="btn btn-success" [disabled]="form.invalid" [mat-dialog-close]="Trabajador"
+    color="primary">Aceptar</button>
 </mat-dialog-actions>

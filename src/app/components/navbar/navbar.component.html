@@ -1,27 +1,34 @@
 <nav class="navbar navbar-expand-lg bg-body-tertiary">
   <div class="container-fluid">
-    <a class="navbar-brand" routerLink="/dashboard/home"> <img class="imagen" src="images.jpg" alt="pannnn">{{titulo}}</a>
-    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+    <a class="navbar-brand" routerLink="/dashboard/home"> <img class="imagen" src="images.jpg"
+        alt="pannnn">{{titulo}}</a>
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent"
+      aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
       <span class="navbar-toggler-icon"></span>
     </button>
     <div class="collapse navbar-collapse" id="navbarSupportedContent">
       <ul class="navbar-nav me-auto mb-2 mb-lg-0">
         <li class="nav-item">
-          <a class="nav-link" routerLink="/dashboard/home"><span><img src="icons8-casa-16.png" alt="" style="margin-top: -4px;"></span>Home</a>
+          <a class="nav-link" routerLink="/dashboard/home"><span><img src="icons8-casa-16.png" alt=""
+                style="margin-top: -4px;"></span>Home</a>
         </li>
         <li class="nav-item">
-          <a class="nav-link" routerLink="/dashboard/productos"><span><img src="icons8-almacenar-16.png" alt="" style="margin-top: -4px;"></span>Almacen</a>
+          <a class="nav-link" routerLink="/dashboard/productos"><span><img src="icons8-almacenar-16.png" alt=""
+                style="margin-top: -4px;"></span>Almacen</a>
         </li>
         <li class="nav-item">
-          <a class="nav-link" routerLink="/dashboard/trabajadores"><span><img src="icons8-hombre-16.png" alt="" style="margin-top: -4px;"></span>Trabajadores</a>
+          <a class="nav-link" routerLink="/dashboard/trabajadores"><span><img src="icons8-hombre-16.png" alt=""
+                style="margin-top: -4px;"></span>Trabajadores</a>
         </li>
         <li class="nav-item">
-          <a class="nav-link" routerLink="/dashboard/turnos"><span><img src="icons8-reloj-16.png" alt="" style="margin-top: -4px;"></span>Turnos</a>
+          <a class="nav-link" routerLink="/dashboard/turnos"><span><img src="icons8-reloj-16.png" alt=""
+                style="margin-top: -4px;"></span>Turnos</a>
         </li>
         <li class="nav-item">
-          <a class="nav-link" routerLink="/dashboard/ventas"><span><img src="icons8-dólar-estadounidense-16.png" alt="" style="margin-top: -4px;"></span>Ventas</a>
+          <a class="nav-link" routerLink="/dashboard/ventas"><span><img src="icons8-dólar-estadounidense-16.png" alt=""
+                style="margin-top: -4px;"></span>Ventas</a>
         </li>
-        </ul>
+      </ul>
     </div>
     <button class="btn btn-outline-danger" (click)="logOut()" type="button">Log Out</button>
   </div>

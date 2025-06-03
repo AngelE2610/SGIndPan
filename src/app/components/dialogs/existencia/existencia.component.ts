@@ -17,26 +17,26 @@ import { NgIf } from '@angular/common';
     MatFormFieldModule,
     MatInputModule,
     FormsModule,
-  MatDialogModule,NgIf],
+    MatDialogModule, NgIf],
   templateUrl: './existencia.component.html',
   styleUrl: './existencia.component.css'
 })
 export class ExistenciaComponent {
-cantidadAAgregar: number = 0;
+  cantidadAAgregar: number = 0;
 
   constructor(
     public dialogRef: MatDialogRef<ExistenciaComponent>,
     @Inject(MAT_DIALOG_DATA) public data: any,
     private productos: ProductsService,
     private toastr: ToastrService
-  ) {}
+  ) { }
 
   cancelar(): void {
     this.dialogRef.close();
   }
-  
-  aceptar():void{
-    
+
+  aceptar(): void {
+
     this.dialogRef.close(this.cantidadAAgregar);
   }
 }

@@ -1,8 +1,5 @@
 <div class="container">
-  <app-encabezado
-    [titulo]="`Turnos: (${datos.length})`"
-    (funcion)="openDialogAdd()"
-    >
+  <app-encabezado [titulo]="`Turnos: (${datos.length})`" (funcion)="openDialogAdd()">
   </app-encabezado>
   <div class="row mb-3 mt-3">
     <div class="col-2">
@@ -10,48 +7,44 @@
     </div>
     <div class="col-2">
       <select class="form-select" [(ngModel)]="filtroTurno" (change)="filtrarTurnos()">
-  <option value="all">Todos</option>
-  <option *ngFor="let num of numerosTurnos" [value]="num">{{num}}</option>
-</select>
+        <option value="all">Todos</option>
+        <option *ngFor="let num of numerosTurnos" [value]="num">{{num}}</option>
+      </select>
     </div>
-    
+
   </div>
 
 
-    <table class="table">
-  <thead>
-    <tr class="table-dark">
-      <th scope="col">Numero de Turno</th>
-      <th scope="col">Responsable</th>
-      <th scope="col">Fecha</th>
-      <th scope="col">Opciones</th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr *ngFor="let turno of elementosPagina">
-      <td>{{turno.numero}}</td>
-      <td>{{ getTrabajadorCargo3(turno.trabajadores)?.nombre}}</td>
-      <td>{{turno.fecha | date}}</td>
-      <td>
-          <app-buttons
-          [textoBoton]="'Detalles'"
-          [objeto]="turno"
-          (funcion)="openDialogDetalles($event)"
-          (eliminar)="deleteTurno($event)"
-          ></app-buttons> 
+  <table class="table">
+    <thead>
+      <tr class="table-dark">
+        <th scope="col">Numero de Turno</th>
+        <th scope="col">Responsable</th>
+        <th scope="col">Fecha</th>
+        <th scope="col">Opciones</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let turno of elementosPagina">
+        <td>{{turno.numero}}</td>
+        <td>{{ getTrabajadorCargo3(turno.trabajadores)?.nombre}}</td>
+        <td>{{turno.fecha | date}}</td>
+        <td>
+          <app-buttons [textoBoton]="'Detalles'" [objeto]="turno" (funcion)="openDialogDetalles($event)"
+            (eliminar)="deleteTurno($event)"></app-buttons>
         </td>
-    </tr>
-  </tbody>
-</table>
-<nav *ngIf="totalPaginas > 1">
-  <ul class="pagination justify-content-center">
-    <li class="page-item cursor-pointer" [class.disabled]="paginaActual === 1">
-      <a class="page-link" (click)="paginaAnterior()">Anterior</a>
-    </li>
-    
-    <li class="page-item cursor-pointer" [class.disabled]="paginaActual === totalPaginas">
-      <a class="page-link" (click)="paginaSiguiente()">Siguiente</a>
-    </li>
-  </ul>
-</nav>
+      </tr>
+    </tbody>
+  </table>
+  <nav *ngIf="totalPaginas > 1">
+    <ul class="pagination justify-content-center">
+      <li class="page-item cursor-pointer" [class.disabled]="paginaActual === 1">
+        <a class="page-link" (click)="paginaAnterior()">Anterior</a>
+      </li>
+
+      <li class="page-item cursor-pointer" [class.disabled]="paginaActual === totalPaginas">
+        <a class="page-link" (click)="paginaSiguiente()">Siguiente</a>
+      </li>
+    </ul>
+  </nav>
 </div>

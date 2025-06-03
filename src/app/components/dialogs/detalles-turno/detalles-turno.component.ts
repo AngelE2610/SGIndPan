@@ -16,46 +16,46 @@ import { TrabajadorService } from '../../../services/trabajador.service';
     MatFormFieldModule,
     MatInputModule,
     FormsModule,
-  MatDialogModule,NgFor,CommonModule],
+    MatDialogModule, NgFor, CommonModule],
   templateUrl: './detalles-turno.component.html',
   styleUrl: './detalles-turno.component.css'
 })
-export class DetallesTurnoComponent implements OnInit{
-  Turno:Turno={
+export class DetallesTurnoComponent implements OnInit {
+  Turno: Turno = {
     numero: 0,
     Productos: [],
     trabajadores: []
   }
-  opciones:Cargo[]=[];
-  productos:any[]=[];
-  trabajadores:Trabajador[]=[];
+  opciones: Cargo[] = [];
+  productos: any[] = [];
+  trabajadores: Trabajador[] = [];
   constructor(
     public dialogRef: MatDialogRef<DetallesTurnoComponent>,
     @Inject(MAT_DIALOG_DATA) public data: any,
-    private trabajador:TrabajadorService
+    private trabajador: TrabajadorService
   ) {
-    
+
   }
   ngOnInit(): void {
-    this.trabajador.getCargos().subscribe((respuesta:any)=>{
-      this.opciones=respuesta;
+    this.trabajador.getCargos().subscribe((respuesta: any) => {
+      this.opciones = respuesta;
     })
-    if(this.data){
-      this.Turno.numero=this.data.numero;
-      this.Turno.fecha=this.data.fecha;
-      this.productos=this.data.Productos;
-      this.trabajadores=this.data.trabajadores;
+    if (this.data) {
+      this.Turno.numero = this.data.numero;
+      this.Turno.fecha = this.data.fecha;
+      this.productos = this.data.Productos;
+      this.trabajadores = this.data.trabajadores;
     }
   }
   getNombreCargo(cargoId: number): string {
-  const cargo = this.opciones.find(c => c.id === cargoId);
-  return cargo ? cargo.nombre : 'N/A';
-}
+    const cargo = this.opciones.find(c => c.id === cargoId);
+    return cargo ? cargo.nombre : 'N/A';
+  }
   cancelar(): void {
     this.dialogRef.close();
   }
-  
-  aceptar():void{
+
+  aceptar(): void {
     this.dialogRef.close();
   }
 }

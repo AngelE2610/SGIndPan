@@ -3,29 +3,31 @@
         <img src="icons8-accede-redondeado-derecho-100.png" alt="img login">
         <h3>Registrar Usuario</h3>
         <form #formUser="ngForm" (ngSubmit)="addUser()">
-        <div class="form-floating mb-3 mt-3">
-            <input type="text" name="nombre" [(ngModel)]="username" class="form-control " #usernameCtrl="ngModel"
-            placeholder="Ingrese usuario" pattern="^[a-zA-Z][a-zA-Z0-9]*$" required>
-            <label >Usuario</label>
-            <div *ngIf="usernameCtrl.invalid && (usernameCtrl.dirty || usernameCtrl.touched)" class="text-danger">
-  <div *ngIf="usernameCtrl.errors?.['required']">El usuario es obligatorio.</div>
-  <div *ngIf="usernameCtrl.errors?.['pattern']">Debe comenzar con una letra y contener solo letras y números.</div>
-</div>
-        </div>
-        <div class="form-floating mb-3">
-            <input type="password" name="password" [(ngModel)]="password" class="form-control"
-             placeholder="Ingrese password" required>
-            <label >Password</label>
-        </div>
-        <div class="form-floating mb-3">
-            <input type="password" name="confirmPassword" [(ngModel)]="confirmPassword" #confirmP="ngModel" class="form-control" placeholder="Repita password" required="">
-            <label >Repetir password</label>
-        </div>
-        <div class="d-grid gap-2 mb-3">
-            <button type="submit" [disabled]="formUser.invalid" class="btn btn-primary btn-lg">Registrar</button>
-        </div>
-        <a routerLink="/login">Volver</a>
-    </form>
+            <div class="form-floating mb-3 mt-3">
+                <input type="text" name="nombre" [(ngModel)]="username" class="form-control " #usernameCtrl="ngModel"
+                    placeholder="Ingrese usuario" pattern="^[a-zA-Z][a-zA-Z0-9]*$" required>
+                <label>Usuario</label>
+                <div *ngIf="usernameCtrl.invalid && (usernameCtrl.dirty || usernameCtrl.touched)" class="text-danger">
+                    <div *ngIf="usernameCtrl.errors?.['required']">El usuario es obligatorio.</div>
+                    <div *ngIf="usernameCtrl.errors?.['pattern']">Debe comenzar con una letra y contener solo letras y
+                        números.</div>
+                </div>
+            </div>
+            <div class="form-floating mb-3">
+                <input type="password" name="password" [(ngModel)]="password" class="form-control"
+                    placeholder="Ingrese password" required>
+                <label>Password</label>
+            </div>
+            <div class="form-floating mb-3">
+                <input type="password" name="confirmPassword" [(ngModel)]="confirmPassword" #confirmP="ngModel"
+                    class="form-control" placeholder="Repita password" required="">
+                <label>Repetir password</label>
+            </div>
+            <div class="d-grid gap-2 mb-3">
+                <button type="submit" [disabled]="formUser.invalid" class="btn btn-primary btn-lg">Registrar</button>
+            </div>
+            <a routerLink="/login">Volver</a>
+        </form>
     </div>
     <app-spinner *ngIf="loading"></app-spinner>
 </div>

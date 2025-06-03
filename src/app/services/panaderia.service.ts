@@ -8,16 +8,16 @@ import { Panaderia } from '../interfaces/panaderia';
   providedIn: 'root'
 })
 export class PanaderiaService {
- private myAppUrl: string;
+  private myAppUrl: string;
   private myApiUrl: string;
   constructor(private http: HttpClient) {
     this.myAppUrl = environment.endpoint;
     this.myApiUrl = 'SGIndPan/panaderia/';
-   }
-   getPanaderia(id:number){
+  }
+  getPanaderia(id: number) {
     return this.http.get(`${this.myAppUrl}${this.myApiUrl}${id}`);
-   }
-   crearPanaderia(nombre:string,userId:number){
-    return this.http.post(`${this.myAppUrl}${this.myApiUrl}`,{nombre,userId});
-   }
+  }
+  crearPanaderia(nombre: string, userId: number) {
+    return this.http.post(`${this.myAppUrl}${this.myApiUrl}`, { nombre, userId });
+  }
 }

@@ -14,30 +14,30 @@ import { NgIf } from '@angular/common';
     MatFormFieldModule,
     MatInputModule,
     FormsModule,
-  MatDialogModule,NgIf],
+    MatDialogModule, NgIf],
   templateUrl: './add-producto.component.html',
   styleUrl: './add-producto.component.css'
 })
 export class AddProductoComponent {
- panaderia = localStorage.getItem('panaderiaId');
+  panaderia = localStorage.getItem('panaderiaId');
   producto: Product = {
     nombre: '',
     existencias: 0,
     fechaAdquisicion: new Date().toISOString().substring(0, 10),
-    panaderiaId:parseInt(this.panaderia?this.panaderia:'0')
+    panaderiaId: parseInt(this.panaderia ? this.panaderia : '0')
   };
 
   constructor(
     public dialogRef: MatDialogRef<AddProductoComponent>,
     @Inject(MAT_DIALOG_DATA) public data: any,
-  ) {}
+  ) { }
 
   cancelar(): void {
     this.dialogRef.close();
   }
-  
-  aceptar():void{
+
+  aceptar(): void {
     this.dialogRef.close(this.producto);
   }
-  
+
 }

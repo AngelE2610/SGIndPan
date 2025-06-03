@@ -16,7 +16,7 @@ declare var bootstrap: any;
 
 @Component({
   selector: 'app-productos',
-  imports: [ FormsModule, CommonModule, MatButtonModule, TablaFiltrarComponent],
+  imports: [FormsModule, CommonModule, MatButtonModule, TablaFiltrarComponent],
   templateUrl: './productos.component.html',
   styleUrl: './productos.component.css'
 })
@@ -27,9 +27,9 @@ export class ProductosComponent {
   productoSeleccionado: any = null;
   modalInstance: any;
   pageSize = 6;
-currentPage = 0;
+  currentPage = 0;
 
-  constructor(private productos: ProductsService, private toastr: ToastrService,public dialog: MatDialog) {}
+  constructor(private productos: ProductsService, private toastr: ToastrService, public dialog: MatDialog) { }
 
   ngOnInit(): void {
     this.refresh()
@@ -47,7 +47,7 @@ currentPage = 0;
     });
 
     dialogRef.afterClosed().subscribe(result => {
-      if(result){
+      if (result) {
         this.productos.aumentarExistencias(producto.id, result)
           .subscribe({
             next: () => {
@@ -67,12 +67,12 @@ currentPage = 0;
     });
 
     dialogRef.afterClosed().subscribe(result => {
-      if(result){
+      if (result) {
         this.productos.crearProducto(result)
           .subscribe({
             next: () => {
               this.toastr.success('Producto creado correctamente');
-             this.refresh()
+              this.refresh()
             },
             error: (err) => {
               this.toastr.error('Error al crear el producto');
@@ -81,33 +81,33 @@ currentPage = 0;
       }
     });
   }
-  deleteProd(producto:any){
+  deleteProd(producto: any) {
     console.log('entrando al delete')
     this.productos.eliminarProd(producto.id);
     this.refresh()
   }
-  refresh(){
+  refresh() {
     const panaderiaId = localStorage.getItem('panaderiaId');
     if (panaderiaId) {
-      this.datos =[];
+      this.datos = [];
       this.getProductos(parseInt(panaderiaId));
     }
   }
   get paginatedData() {
-  const start = this.currentPage * this.pageSize;
-  const end = start + this.pageSize;
-  return this.datos.slice(start, end);
-}
-
-nextPage() {
-  if ((this.currentPage + 1) * this.pageSize < this.datos.length) {
-    this.currentPage++;
+    const start = this.currentPage * this.pageSize;
+    const end = start + this.pageSize;
+    return this.datos.slice(start, end);
   }
-}
 
-prevPage() {
-  if (this.currentPage > 0) {
-    this.currentPage--;
+  nextPage() {
+    if ((this.currentPage + 1) * this.pageSize < this.datos.length) {
+      this.currentPage++;
+    }
   }
-}
+
+  prevPage() {
+    if (this.currentPage > 0) {
+      this.currentPage--;
+    }
+  }
 }

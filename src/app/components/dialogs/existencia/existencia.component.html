@@ -1,17 +1,19 @@
 <h2 mat-dialog-title>Aumentar existencias</h2>
 <mat-dialog-content>
-  <form (ngSubmit)="aceptar()" #form="ngForm"  >
+  <form (ngSubmit)="aceptar()" #form="ngForm">
     <mat-form-field style="width: 100%;">
       <label class="form-label">Cantidad a agregar</label>
-      <input class="form-control" type="text" [(ngModel)]="cantidadAAgregar" #existencia="ngModel" name="cantidad"  pattern="^[1-9][0-9]*$" required>
+      <input class="form-control" type="text" [(ngModel)]="cantidadAAgregar" #existencia="ngModel" name="cantidad"
+        pattern="^[1-9][0-9]*$" required>
       <div *ngIf="existencia.invalid && (existencia.dirty || existencia.touched)" class="text-danger">
-  <div *ngIf="existencia.errors?.['required']">El campo es obligatorio.</div>
-  <div *ngIf="existencia.errors?.['pattern']">Solo puede contener numeros.</div>
-</div>
+        <div *ngIf="existencia.errors?.['required']">El campo es obligatorio.</div>
+        <div *ngIf="existencia.errors?.['pattern']">Solo puede contener numeros.</div>
+      </div>
     </mat-form-field>
   </form>
 </mat-dialog-content>
 <mat-dialog-actions>
   <button mat-button (click)="cancelar()">Cancelar</button>
-  <button class="btn btn-success" [disabled]="form.invalid" [mat-dialog-close]="cantidadAAgregar" color="primary">Aceptar</button>
+  <button class="btn btn-success" [disabled]="form.invalid" [mat-dialog-close]="cantidadAAgregar"
+    color="primary">Aceptar</button>
 </mat-dialog-actions>

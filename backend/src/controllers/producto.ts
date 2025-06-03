@@ -3,7 +3,7 @@ import { Producto } from "../models";
 
 export const crearProducto = async (req: Request, res: Response) => {
   try {
-    const { nombre, existencias, fechaAdquisicion ,panaderiaId} = req.body;
+    const { nombre, existencias, fechaAdquisicion, panaderiaId } = req.body;
 
     // Validar campos obligatorios
     if (!nombre || existencias == null || !fechaAdquisicion) {
@@ -14,7 +14,7 @@ export const crearProducto = async (req: Request, res: Response) => {
     const nuevoProducto = await Producto.create({
       nombre,
       existencias,
-      fechaAdquisicion:fecha,
+      fechaAdquisicion: fecha,
       panaderiaId
     });
 
@@ -30,13 +30,13 @@ export const crearProducto = async (req: Request, res: Response) => {
   }
 };
 
-export const updateProducto = async(req:Request,res:Response)=>{
-    const {existencias} = req.body;
-    const { id } = req.params;
-    
-    try {
-      const producto:any = await Producto.findByPk(id);
-      if (!producto) {
+export const updateProducto = async (req: Request, res: Response) => {
+  const { existencias } = req.body;
+  const { id } = req.params;
+
+  try {
+    const producto: any = await Producto.findByPk(id);
+    if (!producto) {
       return res.status(404).json({ message: 'Producto no encontrado' });
     }
     const nuevasExistencias = producto.existencias + Number(existencias);
@@ -44,40 +44,40 @@ export const updateProducto = async(req:Request,res:Response)=>{
       existencias: nuevasExistencias,
     });
     res.status(200).json(producto);
-    } catch (error) {
-      res.status(500).json({ message: 'Error al actualizar el producto' });
-    }
+  } catch (error) {
+    res.status(500).json({ message: 'Error al actualizar el producto' });
+  }
 }
 
-export const getProductoPanaderia = async(req:Request,res:Response)=>{
-    const { id } = req.params;
+export const getProductoPanaderia = async (req: Request, res: Response) => {
+  const { id } = req.params;
 
-    const productoConDetalles = await Producto.findAll({where:{panaderiaId:id}});
-if (!productoConDetalles) {
-  return res.status(404).json({ msg: "Producto no encontrado" });
-}
-return res.json(productoConDetalles);
-}
-
-
-export const getAllProducto = async(req:Request,res:Response)=>{
-
-    const productoConDetalles = await Producto.findAll();
-return res.json(productoConDetalles);
-
+  const productoConDetalles = await Producto.findAll({ where: { panaderiaId: id } });
+  if (!productoConDetalles) {
+    return res.status(404).json({ msg: "Producto no encontrado" });
+  }
+  return res.json(productoConDetalles);
 }
 
-export const deleteProducto = async(req:Request,res:Response)=>{
-    const { id } = req.params;
-     try {
-      const resultado = await Producto.destroy({where:{id}})
-      if (resultado === 0) {
+
+export const getAllProducto = async (req: Request, res: Response) => {
+
+  const productoConDetalles = await Producto.findAll();
+  return res.json(productoConDetalles);
+
+}
+
+export const deleteProducto = async (req: Request, res: Response) => {
+  const { id } = req.params;
+  try {
+    const resultado = await Producto.destroy({ where: { id } })
+    if (resultado === 0) {
       return res.status(404).json({ message: 'Producto no encontrado' });
     }
 
     res.status(200).json({ message: 'Producto eliminado correctamente' });
-     } catch (error) {
-       res.status(500).json({ message: 'Error al eliminar el producto' });
-     }
+  } catch (error) {
+    res.status(500).json({ message: 'Error al eliminar el producto' });
+  }
 
 }
